@@ -109,9 +109,12 @@ class _RenderGlassShadow extends RenderProxyBox {
             canvas.drawOval(shadowRect, paint);
           case LiquidRoundedRectangle(:final borderRadius):
             canvas.drawRRect(
-              RRect.fromRectAndRadius(
+              RRect.fromRectAndCorners(
                 shadowRect,
-                Radius.circular(borderRadius),
+                topLeft: borderRadius.topLeft,
+                topRight: borderRadius.topRight,
+                bottomLeft: borderRadius.bottomLeft,
+                bottomRight: borderRadius.bottomRight,
               ),
               paint,
             );

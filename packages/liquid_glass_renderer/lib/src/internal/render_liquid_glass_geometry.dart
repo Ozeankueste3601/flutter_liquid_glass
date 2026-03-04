@@ -461,7 +461,7 @@ class ShapeGeometry extends Equatable {
       case LiquidRoundedSuperellipse():
         return shape.borderRadius;
       case LiquidRoundedRectangle():
-        return shape.borderRadius;
+        return shape.borderRadius.topLeft.x;
       case LiquidOval():
         return 0;
     }

@@ -109,6 +109,7 @@ class LiquidOval extends LiquidShape {
 /// Works like a [RoundedRectangleBorder].
 class LiquidRoundedRectangle extends LiquidShape {
   /// Creates a new [LiquidRoundedRectangle] with the given [borderRadius].
+  final BorderRadius borderRadius;
   const LiquidRoundedRectangle({
     required this.borderRadius,
     super.side = BorderSide.none,
@@ -117,18 +118,18 @@ class LiquidRoundedRectangle extends LiquidShape {
   /// The radius of the rounded rectangle.
   ///
   /// This is the radius of the corners of the rounded rectangle.
-  final double borderRadius;
+  // final double borderRadius;
 
   @override
   OutlinedBorder get _equivalentOutlinedBorder => RoundedRectangleBorder(
-        borderRadius: BorderRadius.all(Radius.circular(borderRadius)),
+        borderRadius: borderRadius,
         side: side,
       );
 
   @override
   LiquidRoundedRectangle copyWith({
     BorderSide? side,
-    double? borderRadius,
+    BorderRadius? borderRadius,
   }) {
     return LiquidRoundedRectangle(
       side: side ?? this.side,
@@ -139,7 +140,7 @@ class LiquidRoundedRectangle extends LiquidShape {
   @override
   ShapeBorder scale(double t) {
     return LiquidRoundedRectangle(
-      borderRadius: borderRadius * t,
+      borderRadius: borderRadius,
       side: side.scale(t),
     );
   }
